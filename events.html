@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hostel Mess Food Selection</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+    /* styles.css */
+body {
+    font-family: Arial, sans-serif;
+    background-color: orange;
+}
+  button{
+    background-color: greenyellow;
+  }
+  .meal {
+    margin-bottom: 20px;
+  }
+  
+  .food {
+    margin-right: 10px;
+  }
+ /* Apply styles when input is focused */
+input[type="text"]:focus {
+    background-color: yellow;
+}
+
+/* Style for the checkboxes */
+input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+/* Style for the special items select */
+select {
+    margin-bottom: 10px;
+}
+
+/* Style for the headings */
+h1, h2 {
+    margin-top: 20px;
+}
+
+/* Style for the total rupees section */
+#total {
+    font-weight: bold;
+    color: green;
+}
+
+/* Style for the notice button */
+button {
+    margin-top: 10px;
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Style for the special notice paragraph */
+#sample {
+    font-weight: bold;
+    color: red;
+    margin-top: 10px;
+}
+
+/* Style for the contact information paragraph */
+#myP {
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+/* Apply styles when mouse is down */
+#myP:active {
+    color: blue;
+}
+
+</style>
+</head>
+<body onload="loadfunc()">
+
+<h1>Hostel Mess Food Selection</h1>
+<div>
+Enter your Room Number: <input type="text" placeholder="eg : E-26" onfocus="MYFunction(this)" >
+
+<script>
+function MYFunction(x) {
+  x.style.background = "yellow";
+}
+</script>
+</div>
+
+<div id="breakfast" class="meal">
+  <h2>Breakfast</h2>
+  <label><input type="checkbox" class="food" data-price="5"> Idly - 5rs</label><br>
+  <label><input type="checkbox" class="food" data-price="20"> Dosa - 20rs</label><br>
+  <label><input type="checkbox" class="food" data-price="15"> Poori - 15rs</label><br>
+  
+  <p>Select any one Special Item</p>
+  <select id="mySelect" onchange="myFunction()">
+    <option value="Kesari">Kesari</option>
+    <option value="Sweet Pongal">Sweet Pongal</option>
+    <option value="Frurits">Fruits</option>
+    <option value="Desserts">Desserts</option>
+  </select>
+  <p id="demo"></p>
+
+<script>
+function myFunction() {
+  var x = document.getElementById("mySelect").value;
+  document.getElementById("demo").innerHTML = "You selected: " + x;
+}
+</script>
+</div>
+
+<div id="lunch" class="meal">
+  <h2>Lunch</h2>
+  <label><input type="checkbox" class="food" data-price="60"> Variety Rice - 60rs</label><br>
+  <label><input type="checkbox" class="food" data-price="120"> Meals - 120rs</label><br>
+  <label><input type="checkbox" class="food" data-price="140"> Biriyani - 140rs</label><br>
+  <p>Select any one Special Item</p>
+  <select id="mySelect" onchange="myFunction()">
+    <option value="Cool Drinks">Cool Drinks</option>
+    <option value="Payasam">Payasam</option>
+    <option value="Rose Milk">Rose Milk</option>
+  </select>
+  <p id="demo"></p>
+
+<script>
+function myFunction() {
+  var x = document.getElementById("mySelect").value;
+  document.getElementById("demo").innerHTML = "You selected: " + x;
+}
+</script>
+</div>
+
+<div id="dinner" class="meal">
+  <h2>Dinner</h2>
+  <label><input type="checkbox" class="food" data-price="15"> Chappthi - 15rs</label><br>
+  <label><input type="checkbox" class="food" data-price="20"> Parotta - 20rs</label><br>
+  <label><input type="checkbox" class="food" data-price="50"> Noodles - 50rs</label><br>
+  <p>Select any one Special Item</p>
+  <select id="mySelect" onchange="myFunction()">
+    <option value="Coffee/Tea">Coffee/Tea</option>
+    <option value="Badam Milk">Badam Milk</option>
+    <option value="Fruits">Fruits</option>
+  </select>
+  <p id="demo"></p>
+
+<script>
+function myFunction() {
+  var x = document.getElementById("mySelect").value;
+  document.getElementById("demo").innerHTML = "You selected: " + x;
+}
+</script>
+</div>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const checkboxes = document.querySelectorAll('.food');
+    const totalDisplay = document.getElementById('total');
+    let totalCost = 0;
+  
+    checkboxes.forEach(function(checkbox) {
+      checkbox.addEventListener('change', function() {
+        const price = parseInt(this.dataset.price);
+        if (this.checked) {
+          totalCost += price;
+        } else {
+          totalCost -= price;
+        }
+        totalDisplay.textContent = totalCost;
+      });
+    });
+  });
+  
+</script>
+<h2>Total Rupees :<span id="total">0</span></h2>
+<script>
+    function loadfunc() {
+      alert("Page is loaded");
+    }
+    </script>
+    Enter your Hostel Passcode: <input type="text" id="fname" onblur="passcode()">
+    <script>
+    function passcode() {
+      let x = document.getElementById("fname");
+      x.value = x.value.toUpperCase();
+    }
+    </script>
+    <p>Click this button to Know the special events or Notice in the hostel</p>
+
+    <button onclick="remainder()">NOTICE !!!</button>
+
+    <p id="sample"></p>
+    
+    <script>
+    function remainder() {
+      document.getElementById("sample").innerHTML = "HOSTEL DAY STARTS FROM MAR 11 !!!";
+    }
+    </script>
+<p id="myP" onmousedown="mouseDown()" onmouseup="mouseUp()">
+    IN CASE OF ANY ISSUES IN THIS SERVICE DIAL:1234242</p>
+<script>
+    function mouseDown() {
+      document.getElementById("myP").style.color = "blue";
+    }
+    
+    function mouseUp() {
+      document.getElementById("myP").style.color = "red";
+    }
+    </script>
+   
+        
+<script src="script.js"></script>
+</body>
+</html>
+
