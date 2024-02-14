@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   
+
+    <title>HOSTEL MESS REGISTRATION</title>
+    <style>
+        
+        body {
+            font-family: Arial, sans-serif;
+            margin: 10px;
+		background-color:#FFA756
+ 
+        }
+	
+	form{margin: 0px;padding: 100px;}
+        .container{padding:10px;
+                    background-color:rgb(255, 255, 255);
+                    margin:30px 500px 10px 500px;
+		    background-color: #FED8B1;
+                    box-shadow: 0 6px 10px black;
+                    display: flex;
+                    border-radius:30px ;
+                    }
+	h1{
+	text-align:center;
+	
+	}
+
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 30px;
+	
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+		border: none;
+		outline:none;
+		border: 2px solid rgba(255,255,255,2);
+		border-radius: 40px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+    <script defer src="./index.js">
+        
+    </script>
+</head>
+<body>
+ <h1>Hostel Mess Registration</h1>
+	<div class="container">
+ <form onsubmit="return validate()">
+<br>
+      <div>
+       <label for="username" id="userr"><h4>Full Name :</h4></label>
+        <input type="text" id="username"  placeholder="enter your fullName" required>
+	</div>
+        <label for="rollnumber" id="rollnum" ><h4>Roll Number:</h4></label>
+        <input type="text" id="rollNumber" placeholder="enter your rollnumber" required>
+      <div>
+        <label for="email" id="emailerr"><h4>Email:</h4></label>
+        <input type="email" id="email" placeholder="enter your email" required>
+    </div>
+    <div>
+	<label for="mob" id="moberr"><h4> Mobile_no:</h4></label>
+	<input type="tel" id="mob" placeholder="enter your mobile number" required>
+       <label>
+    </div>  
+<h4>Gender: </h4>  
+</label> 
+
+<input type="radio" id="gender" name="gender" value="male"/> Male    
+<input type="radio" id="gender" name="gender" value="female"/>Female<br><br>
+<label for="dob"><h4>Date of birth :</h4></label>
+<input type="date" id="dob" name=dob" required>
+
+        <label for="diet"><h4>Dietary Preferences:</h4></label>
+        <input type="radio" id="diet" name="diet" value="veg" required>Veg<br>
+	<input type="radio" id="diet" name="diet" value="Non-veg" required>Non-Veg </br>
+        <br>
+<label for="type"><h4>Food type:</h4></label>
+<input type="checkbox" id="type" name="type" value="south" required>South Indian<br>
+<input type="checkbox" id="type" name="type" value="north" required>North Indian<br>
+<input type="checkbox" id="type" name="type" value="continental" required>Continental<br><br>
+<button type="submit">Submit Registration</button>
+<a href="#">Already have an account!!<a>
+</div>
+    </form>
+
+
+
+</body>
+<script>
+        function validate(){
+            var username = document.getElementById("username").value;
+            var emailid = document.getElementById("email").value;
+            var pw = document.getElementById("pass").value;
+            var repw = document.getElementById("repass").value;
+            var alpha = /^[a-zA-Z\s]+$/;
+            var mail = /^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$/;
+            var alpnum = /^[a-zA-Z0-9\s]+$/;
+            if (alpha.test(username)===false){
+                document.getElementById("useerr").innerHTML += "<span style='color:red;'>*</span>";
+                document.getElementById("error").innerHTML ="<span style = 'color:red;'>invalid *</span>";
+                
+                return false;
+            }
+            if (mail.test(emailid)===false){
+                document.getElementById("emailerr").innerHTML += "<span style='color:red;'>*</span>";
+                document.getElementById("error").innerHTML ="<span style = 'color:red;'>invalid *</span>";
+                return false;
+            }
+           
+            if (pw !== repw){
+                document.getElementById("repaw").innerHTML += "<span style='color:red;'>*</span>";
+                document.getElementById("error").innerHTML = "<span style='color:red;'>* Passwords do not match</span>";
+                return false;
+            }
+        }
+        </script>
+
+</html>
